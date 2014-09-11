@@ -5,6 +5,8 @@ class CategoriesController < ApplicationController
   expose(:category)
   expose(:product) { Product.new }
 
+  before_filter :require_admin, only: [:create, :edit, :update, :new]
+
   def index
   end
 
@@ -43,5 +45,9 @@ class CategoriesController < ApplicationController
   private
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def require_admin
+      (current_user.nil?) ? redirect_to(:new_user_session) : (redirect_to(:new_user_session) unless current_user.admin?)
     end
 end
