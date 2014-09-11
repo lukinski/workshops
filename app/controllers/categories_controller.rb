@@ -1,10 +1,8 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
-  
   expose(:categories)
   expose(:category)
   expose(:product) { Product.new }
-
+  before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
   before_filter :require_admin, only: [:create, :edit, :update, :new]
 
   def index
