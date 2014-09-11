@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   expose(:product)
   expose(:review) { Review.new }
   expose_decorated(:reviews, ancestor: :product)
-  before_filter :authenticate_user!, only: [:create, :update, :destroy]
-  before_filter :check_ownership, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :check_ownership, only: [:edit, :update]
 
   def index
   end
