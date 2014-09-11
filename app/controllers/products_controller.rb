@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
   expose(:product)
   expose(:review) { Review.new }
   expose_decorated(:reviews, ancestor: :product)
+  before_filter :authenticate_user!, only: [:create, :update, :destroy]
+  before_filter :check_ownership, only: [:edit, :update]
 
   def index
   end
@@ -46,5 +48,13 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:title, :description, :price, :category_id)
+  end
+
+  def check_ownership
+    redirect_to(category_product_url(category, product), flash: {error: 'You are not allowed to edit this product.'}) and return unless valid_owner?
+  end
+
+  def valid_owner?
+    product.user == current_user
   end
 end
