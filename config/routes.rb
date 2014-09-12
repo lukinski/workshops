@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/profile/:id' => 'profiles#show', as: :profile
+
   devise_for :users
   
   resources :categories do

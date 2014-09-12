@@ -1,0 +1,19 @@
+%h1 
+  = image_tag gravatar_url(user)
+  = user.fullname
+
+%h3 User profile 
+
+%div.row.panel
+  %dl.dl-horizontal
+    %dt Registered
+    %dd
+      = user.created_at.strftime('%d-%m-%Y')
+    %dt Email
+    %dd 
+      = mail_to user.email
+    
+= render 'user_reviews'
+
+%br
+= link_to 'Back', :back, class: 'btn btn-primary'

@@ -2,7 +2,7 @@
   %p
     = review.content
   %footer
-    = "#{review.author},"
+    = link_to review.author, profile_url(review.user)
     %em
-      = 'rating:'
+      = ', rating:'
       %span.badge.alert-info= review.rating

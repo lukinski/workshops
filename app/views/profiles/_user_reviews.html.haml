@@ -1,0 +1,15 @@
+%h3 Last user reviews
+
+%div.panel
+  - reviews.each do |review|
+    %blockquote
+      %p
+        = review.content
+      %footer
+        %em
+          = 'For product'
+          = link_to review.product.title, category_product_path(review.product.category, review.product)
+          = ', rating:'
+          %span.badge.alert-info= review.rating
+          = ', written:'
+          %b= review.created_at.strftime('%d-%m-%y')

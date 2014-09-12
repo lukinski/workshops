@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :products
 
   validates_presence_of :firstname, :lastname
+
+  def fullname
+    "#{firstname} #{lastname}"
+  end
 end
