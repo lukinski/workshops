@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
     else
-      render action: 'new'
+      redirect_to category_product_url(product.category, product), flash: {error: 'Error adding review.'}
     end
   end
 

@@ -21,7 +21,10 @@
 
 %hr
 %h3 Reviews
-= render reviews
+- unless reviews.empty?
+  = render reviews
+- else
+  %div.alert.alert-warning This product has no reviews yet.
 
 %br
 
