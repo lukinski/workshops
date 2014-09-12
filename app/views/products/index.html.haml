@@ -1,21 +1,23 @@
 %h1 Listing products
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Price
-    %th
-    %th
-    %th
-
-  - products.each do |product|
+%table.table.table-striped
+  %thead
     %tr
-      %td= product.title
-      %td= product.description
-      %td= product.price
-      %td= link_to 'Show', category_product_path(product.category, product)
-      %td= link_to 'Edit', edit_category_product_path(product.category, product) if user_signed_in? && product.user == current_user
-      %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? && product.user == current_user
+      %th Title
+      %th Description
+      %th Price
+      %th
+      %th
+      %th
+
+  %tbody
+    - products.each do |product|
+      %tr
+        %td= product.title
+        %td= product.description
+        %td= product.price
+        %td= link_to 'Show', category_product_path(product.category, product), class: 'btn btn-success'
+        %td= link_to 'Edit', edit_category_product_path(product.category, product), class: 'btn btn-warning' if user_signed_in? && product.user == current_user
+        %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' if user_signed_in? && product.user == current_user
 
 %br

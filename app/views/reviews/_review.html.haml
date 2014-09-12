@@ -1,4 +1,8 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+%blockquote
+  %p
+    = review.content
+  %footer
+    = "#{review.author},"
+    %em
+      = 'rating:'
+      %span.badge.alert-info= review.rating

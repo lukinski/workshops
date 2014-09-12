@@ -1,7 +1,8 @@
 %h1 Editing category
 
-= render 'form'
+%div.row.panel
+  %div.col-md-4
+    = render 'form'
 
-= link_to 'Show', category
-\|
+= link_to 'Show', category, class: 'btn btn-success'
 = link_to 'Back', categories_path, class: 'btn btn-primary'
