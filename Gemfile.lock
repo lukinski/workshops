@@ -117,6 +117,7 @@ GEM
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
+    newrelic_rpm (3.9.4.245)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
@@ -234,6 +235,7 @@ DEPENDENCIES
   ffaker
   haml-rails
   jquery-rails
+  newrelic_rpm
   pg
   pry
   quiet_assets
